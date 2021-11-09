@@ -1,0 +1,26 @@
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Christmas bot.exe
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Christmas bot.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Christmas bot.runtimeconfig.json
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Christmas bot.dll.config
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Christmas bot.pdb
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\ConcurrentCollections.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\DSharpPlus.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\DSharpPlus.CommandsNext.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\DSharpPlus.Interactivity.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\DSharpPlus.VoiceNext.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Emzi0767.Common.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Newtonsoft.Json.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Collections.Immutable.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.ComponentModel.Composition.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Text.Encodings.Web.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Text.Json.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Threading.Channels.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\runtimes\win-x64\native\libopus.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\runtimes\win-x64\native\libsodium.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\runtimes\win-x86\native\libopus.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\runtimes\win-x86\native\libsodium.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Christmas bot.deps.json
