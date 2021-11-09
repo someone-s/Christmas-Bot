@@ -26,7 +26,6 @@ namespace Christmas_bot
         {
             var config = new DiscordConfiguration
             {
-                Token = "0OTA2ODczNTIzMDg2MTcyMjIx.YYe9yA.MToSIHY7UXTszJ1Md7oBcbxJFVU",
                 TokenType = TokenType.Bot,
                 AutoReconnect = true,
                 MinimumLogLevel = LogLevel.Debug
