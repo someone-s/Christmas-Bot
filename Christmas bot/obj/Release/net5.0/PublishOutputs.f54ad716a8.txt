@@ -1,0 +1,24 @@
+C:\Users\Eden\Desktop\Test\Christmas bot.exe
+C:\Users\Eden\Desktop\Test\Christmas bot.dll
+C:\Users\Eden\Desktop\Test\Christmas bot.runtimeconfig.json
+C:\Users\Eden\Desktop\Test\Christmas bot.dll.config
+C:\Users\Eden\Desktop\Test\Christmas bot.pdb
+C:\Users\Eden\Desktop\Test\ConcurrentCollections.dll
+C:\Users\Eden\Desktop\Test\DSharpPlus.dll
+C:\Users\Eden\Desktop\Test\DSharpPlus.CommandsNext.dll
+C:\Users\Eden\Desktop\Test\DSharpPlus.Interactivity.dll
+C:\Users\Eden\Desktop\Test\DSharpPlus.VoiceNext.dll
+C:\Users\Eden\Desktop\Test\Emzi0767.Common.dll
+C:\Users\Eden\Desktop\Test\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Eden\Desktop\Test\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Eden\Desktop\Test\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Eden\Desktop\Test\Newtonsoft.Json.dll
+C:\Users\Eden\Desktop\Test\System.Collections.Immutable.dll
+C:\Users\Eden\Desktop\Test\System.ComponentModel.Composition.dll
+C:\Users\Eden\Desktop\Test\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Eden\Desktop\Test\System.Threading.Channels.dll
+C:\Users\Eden\Desktop\Test\runtimes\win-x64\native\libopus.dll
+C:\Users\Eden\Desktop\Test\runtimes\win-x64\native\libsodium.dll
+C:\Users\Eden\Desktop\Test\runtimes\win-x86\native\libopus.dll
+C:\Users\Eden\Desktop\Test\runtimes\win-x86\native\libsodium.dll
+C:\Users\Eden\Desktop\Test\Christmas bot.deps.json

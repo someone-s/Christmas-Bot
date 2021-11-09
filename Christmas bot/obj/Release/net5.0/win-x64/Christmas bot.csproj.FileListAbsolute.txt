@@ -1,0 +1,36 @@
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.exe
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.dll.config
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.dll.manifest
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.application
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.deps.json
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.runtimeconfig.json
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.runtimeconfig.dev.json
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\ref\Christmas bot.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Christmas bot.pdb
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\ConcurrentCollections.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\DSharpPlus.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\DSharpPlus.CommandsNext.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\DSharpPlus.Interactivity.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\DSharpPlus.VoiceNext.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Emzi0767.Common.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\Newtonsoft.Json.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\System.Collections.Immutable.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\System.ComponentModel.Composition.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\System.Threading.Channels.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\libopus.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Release\net5.0\win-x64\libsodium.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.csproj.AssemblyReference.cache
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.csproj.CoreCompileInputs.cache
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.dll.manifest
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.application
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.csproj.CopyComplete
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\ref\Christmas bot.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.pdb
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Release\net5.0\win-x64\Christmas bot.genruntimeconfig.cache

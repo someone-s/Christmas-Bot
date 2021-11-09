@@ -1,0 +1,49 @@
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Christmas bot.exe.config
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Christmas bot.exe
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Christmas bot.pdb
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\ConcurrentCollections.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.CommandsNext.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.Interactivity.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.VoiceNext.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Emzi0767.Common.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Buffers.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Memory.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Threading.Channels.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.ValueTuple.dll
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\ConcurrentCollections.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.CommandsNext.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.Interactivity.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\DSharpPlus.VoiceNext.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Emzi0767.Common.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Buffers.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Memory.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Threading.Channels.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\System.ValueTuple.xml
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\Christmas bot.csproj.AssemblyReference.cache
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\Christmas bot.csproj.CoreCompileInputs.cache
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\Christmas bot.exe
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\Christmas bot.pdb
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Christmas bot.exe.manifest
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\Christmas bot.application
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\Christmas bot.exe.manifest
+C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\Christmas bot.application

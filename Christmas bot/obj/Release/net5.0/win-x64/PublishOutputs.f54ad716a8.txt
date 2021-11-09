@@ -1,0 +1,5 @@
+C:\Users\Eden\Desktop\Test\Christmas bot.pdb
+C:\Users\Eden\Desktop\Test\Christmas bot.dll.config
+C:\Users\Eden\Desktop\Test\libopus.dll
+C:\Users\Eden\Desktop\Test\libsodium.dll
+C:\Users\Eden\Desktop\Test\Christmas bot.exe
