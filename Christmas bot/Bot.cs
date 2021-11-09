@@ -17,7 +17,7 @@ using Christmas_bot.Commands;
 
 namespace Christmas_bot
 {
-    public partial class Bot
+    public class Bot
     {
         public DiscordClient Client { get; private set; }
         public CommandsNextExtension Commands { get; private set; }
@@ -35,9 +35,7 @@ namespace Christmas_bot
             {
                 var json = await JsonDocument.ParseAsync(fs, new JsonDocumentOptions { AllowTrailingCommas = true }).ConfigureAwait(false);
                 var root = json.RootElement;
-                string t;
-                config.Token = (t = root.GetProperty("token").GetString());
-                Console.WriteLine(t);
+                config.Token = root.GetProperty("token").GetString();
             }
 
             Client = new DiscordClient(config);
@@ -63,18 +61,6 @@ namespace Christmas_bot
         private Task OnClientReady(DiscordClient c, ReadyEventArgs e)
         {
             return Task.CompletedTask;
-        }
-    }
-    public partial class Bot
-    {
-        private async Task<string> GetJson(string path)
-        {
-            var json = string.Empty;
-            using (var fs = File.OpenRead(path))
-            using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
-                json = await sr.ReadToEndAsync().ConfigureAwait(false);
-
-            return json;
         }
     }
 }

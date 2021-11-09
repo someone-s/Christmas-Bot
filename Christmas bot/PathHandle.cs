@@ -6,22 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DSharpPlus.Entities;
+
 namespace Christmas_bot
 {
-    public static class PathHandle
+    internal static class PathHandle
     {
-        public static string GetAdminPath(ulong server)
+        public static string GetAdminPath(DiscordGuild guild)
         {
-            var root = GetServerPath(server);
+            var root = GetServerPath(guild);
             var admins = $"{root}{Path.DirectorySeparatorChar}admins.txt";
             if (!File.Exists(admins))
                 using (File.Create(admins))
                     Debug.WriteLine($"{admins} created");
             return admins;
         }
-        public static string GetGiftPath(ulong server)
+        public static string GetGiftPath(DiscordGuild guild)
         {
-            var root = GetServerPath(server);
+            var root = GetServerPath(guild);
             var gifts = $"{root}{Path.DirectorySeparatorChar}gifts.txt";
             if (!File.Exists(gifts))
                 using (File.Create(gifts))
@@ -35,9 +37,9 @@ namespace Christmas_bot
                 Directory.CreateDirectory(root);
             return root;
         }
-        public static string GetServerPath(ulong server)
+        public static string GetServerPath(DiscordGuild guild)
         {
-            var path = $"{GetRootPath()}{Path.DirectorySeparatorChar}servers{Path.DirectorySeparatorChar}{server}";
+            var path = $"{GetRootPath()}{Path.DirectorySeparatorChar}servers{Path.DirectorySeparatorChar}{guild.Id}";
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
             return path;
