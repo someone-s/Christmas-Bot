@@ -3,11 +3,10 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Entities;
@@ -27,11 +26,19 @@ namespace Christmas_bot
         {
             var config = new DiscordConfiguration
             {
-                Token = "0OTA2ODczNTIzMDg2MTcyMjIx.YYe9yA.MToSIHY7UXTszJ1Md7oBcbxJFVU",
                 TokenType = TokenType.Bot,
                 AutoReconnect = true,
                 MinimumLogLevel = LogLevel.Debug
             };
+
+            using (var fs = new FileStream($"{PathHandle.GetRootPath()}{Path.DirectorySeparatorChar}config.json", FileMode.OpenOrCreate))
+            {
+                var json = await JsonDocument.ParseAsync(fs, new JsonDocumentOptions { AllowTrailingCommas = true }).ConfigureAwait(false);
+                var root = json.RootElement;
+                string t;
+                config.Token = (t = root.GetProperty("token").GetString());
+                Console.WriteLine(t);
+            }
 
             Client = new DiscordClient(config);
 

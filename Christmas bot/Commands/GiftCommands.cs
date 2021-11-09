@@ -16,31 +16,6 @@ namespace Christmas_bot.Commands
     public class GiftCommands : BaseCommandModule
     {
         private char seperator = '^';
-        private string GetAdminPath(ulong server)
-        {
-            var root = GetRootPath(server);
-            var admins = $"{root}{Path.DirectorySeparatorChar}admins.txt";
-            if (!File.Exists(admins))
-                using (File.Create(admins))
-                    Debug.WriteLine($"{admins} created");
-            return admins;
-        }
-        private string GetGiftPath(ulong server)
-        {
-            var root = GetRootPath(server);
-            var gifts = $"{root}{Path.DirectorySeparatorChar}gifts.txt";
-            if (!File.Exists(gifts))
-                using (File.Create(gifts))
-                    Debug.WriteLine($"{gifts} created");
-            return gifts;
-        }
-        private string GetRootPath(ulong server)
-        {
-            var root = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}servers{Path.DirectorySeparatorChar}{server}";
-            if (!Directory.Exists(root))
-                Directory.CreateDirectory(root);
-            return root;
-        }
 
         [Command("gift-admin-add")]
         [Description("add gift admin")]
@@ -60,7 +35,7 @@ namespace Christmas_bot.Commands
             }
             else
             {
-                var path = GetAdminPath(ctx.Guild.Id);
+                var path = PathHandle.GetAdminPath(ctx.Guild.Id);
 
                 using (var sw = new StreamWriter(path, true))
                     sw.WriteLine(newadmin.Id);
@@ -98,7 +73,7 @@ namespace Christmas_bot.Commands
             else
             {
                 var admins = new List<ulong>();
-                var path = GetAdminPath(ctx.Guild.Id);
+                var path = PathHandle.GetAdminPath(ctx.Guild.Id);
 
                 var s = string.Empty;
                 using (var fs = File.Open(path, FileMode.OpenOrCreate))
@@ -131,7 +106,7 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            var path = GetAdminPath(ctx.Guild.Id);
+            var path = PathHandle.GetAdminPath(ctx.Guild.Id);
             var embed = new DiscordEmbedBuilder
             {
                 Title = $"success",
@@ -172,7 +147,7 @@ namespace Christmas_bot.Commands
             }
             else
             {
-                var path = GetGiftPath(ctx.Guild.Id);
+                var path = PathHandle.GetGiftPath(ctx.Guild.Id);
 
                 var embed = new DiscordEmbedBuilder
                 {
@@ -211,7 +186,7 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            var path = GetGiftPath(ctx.Guild.Id);
+            var path = PathHandle.GetGiftPath(ctx.Guild.Id);
             var embed = new DiscordEmbedBuilder
             {
                 Title = $"success",
@@ -242,7 +217,7 @@ namespace Christmas_bot.Commands
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
             var admins = new List<ulong>();
-            var path = GetAdminPath(ctx.Guild.Id);
+            var path = PathHandle.GetAdminPath(ctx.Guild.Id);
 
             var s = string.Empty;
             using (var fs = File.Open(path, FileMode.OpenOrCreate))
@@ -267,7 +242,7 @@ namespace Christmas_bot.Commands
                 var used = new HashSet<int>();
                 var flip = false;
 
-                path = GetGiftPath(ctx.Guild.Id);
+                path = PathHandle.GetGiftPath(ctx.Guild.Id);
 
                 using (var fs = File.Open(path, FileMode.OpenOrCreate))
                 using (var sr = new StreamReader(fs))
@@ -354,7 +329,7 @@ namespace Christmas_bot.Commands
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
             var admins = new List<ulong>();
-            var path = GetAdminPath(ctx.Guild.Id);
+            var path = PathHandle.GetAdminPath(ctx.Guild.Id);
 
             var s = string.Empty;
             using (var fs = File.Open(path, FileMode.OpenOrCreate))
@@ -374,7 +349,7 @@ namespace Christmas_bot.Commands
             }
             else
             {
-                path = GetGiftPath(ctx.Guild.Id);
+                path = PathHandle.GetGiftPath(ctx.Guild.Id);
                 File.Delete(path);
 
                 var embed = new DiscordEmbedBuilder
