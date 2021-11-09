@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Christmas bot.dll" size="30208">
+  <file name="Christmas bot.dll" size="32768">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Ms+igxnZ6qJAeOHVxPh//nOwep2z8x6CN8HyNG+I+IU=</dsig:DigestValue>
+      <dsig:DigestValue>lhEntK2YcbStRZCk0VGE8FH1LVEDZvmc2CJ0QKE3FJE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Christmas bot.dll.config" size="2110">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>9l+Iciq0FRBBv/90oOc4LhNDSqo5wIhbqSzIMkMK5bQ=</dsig:DigestValue>
+      <dsig:DigestValue>kdMVw8qxSk8c5UbGSgQpncjRU4nBf07PdOTCYcq3c0w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ConcurrentCollections.dll" size="13824">
