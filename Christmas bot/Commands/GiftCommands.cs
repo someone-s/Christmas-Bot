@@ -113,12 +113,12 @@ namespace Christmas_bot.Commands
         [Aliases("ga", "add-g")]
         [Description("add gift to pool")]
         public async Task AddGift(CommandContext ctx,
-            [Description("either text, url, imageurl")] string type,
+            [Description("either text, url, imageurl; use quotation to include spaces")] string type,
             [Description("gift in text form")] string gift)
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            var filtered = new string(gift.Where(c => c != '^').ToArray());
+            var filtered = TextHandle.CleanText(gift);
 
             if (filtered.Length == 0)
                 await MessageHandle.SendError(ctx.Channel,

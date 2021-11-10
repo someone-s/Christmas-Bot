@@ -28,7 +28,7 @@ namespace Christmas_bot
                 embed.Title = alternatetitle;
             if (message is not null)
                 embed.Description = message;
-            if (imageurl is not null && UrlHandle.isEmbedableImage(imageurl))
+            if (imageurl is not null && TextHandle.isEmbedableImage(imageurl))
                 embed.ImageUrl = imageurl;
             if (url is not null)
                 embed.Url = url;
