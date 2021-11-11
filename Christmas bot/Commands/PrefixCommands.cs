@@ -15,7 +15,7 @@ namespace Christmas_bot.Commands
         [Command("prefix-add")]
         [Aliases("pa", "add-p")]
         [Description("add prefix")]
-        public async Task AssignAdmin(CommandContext ctx,
+        public async Task AssignPrefix(CommandContext ctx,
             [Description("prefix to add")] string newprefix)
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
@@ -39,7 +39,7 @@ namespace Christmas_bot.Commands
         [Command("prefix-remove")]
         [Aliases("pr", "rm-p")]
         [Description("remove prefix")]
-        public async Task RelegateAdmin(CommandContext ctx,
+        public async Task RemovePrefix(CommandContext ctx,
             [Description("prefix to remove")] string formerprefix)
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
@@ -61,7 +61,7 @@ namespace Christmas_bot.Commands
         [Command("prefix-list")]
         [Aliases("pl", "listp")]
         [Description("list prefix")]
-        public async Task ListAdmin(CommandContext ctx)
+        public async Task ListPrefix(CommandContext ctx)
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
