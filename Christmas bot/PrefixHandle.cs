@@ -50,12 +50,9 @@ namespace Christmas_bot
 
         public static async Task<int> HandlePrefix(DiscordMessage msg)
         {
-            await Task.Run(() => Console.WriteLine("Interpreting prefix"));
+            await Task.Run(() => 1 + 1);
 
             var prefixes = GetPrefixes(msg.Channel.Guild);
-            foreach (var prefix in prefixes)
-                Console.WriteLine(prefix);
-            Console.WriteLine(msg.Content);
 
             int i = 0;
             bool flag = false;
