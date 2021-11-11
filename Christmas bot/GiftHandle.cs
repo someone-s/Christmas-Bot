@@ -4,52 +4,59 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
+using Newtonsoft.Json;
 using DSharpPlus.Entities;
 
 namespace Christmas_bot
 {
     internal static class GiftHandle
     {
-        public static char seperator = '^';
-
-        public static void WriteGift(StreamWriter sw, ulong id, string gift) =>
-            sw.WriteLine($"{id}{seperator}{gift}");
-
-        public static void ReadGift(string s, out ulong id, out string gift)
+        public static void WriteGift(DiscordGuild guild, DiscordUser user, string gift)
         {
-            var p = s.Split(seperator);
-            id = ulong.Parse(p[0]);
-            gift = p[1];
+            var path = PathHandle.GetGiftPath(guild);
+            var json = File.ReadAllText(path);
+            var list = JsonConvert.DeserializeObject<List<(ulong, string)>>(json);
+            if (list is null)
+                list = new List<(ulong, string)>();
+
+            list.Add((user.Id, gift));
+
+            json = JsonConvert.SerializeObject(list, Formatting.Indented);
+            File.WriteAllText(path, json);
         }
 
-        public static List<Tuple<ulong, string>> ReadGifts(DiscordGuild guild)
+        public static async Task<List<(DiscordUser, string)>> ReadGifts(DiscordGuild guild)
         {
-            var gifts = new List<Tuple<ulong, string>>();
-
             var s = string.Empty;
             var path = PathHandle.GetGiftPath(guild);
+            var json = File.ReadAllText(path);
+            var list = JsonConvert.DeserializeObject<List<(ulong, string)>>(json);
+            if (list is null)
+                list = new List<(ulong, string)>();
 
-            using (var fs = File.Open(path, FileMode.OpenOrCreate))
-            using (var sr = new StreamReader(fs))
-                while ((s = sr.ReadLine()) != null)
-                {
-                    ReadGift(s, out ulong id, out string gift);
-                    gifts.Add(new Tuple<ulong, string>(id, gift));
-                }
-
+            var gifts = new List<(DiscordUser, string)>();
+            foreach (var tuple in list)
+            {
+                var user = await guild.GetMemberAsync(tuple.Item1).ConfigureAwait(false);
+                gifts.Add((user, tuple.Item2));
+            }
             return gifts;
         }
 
-        public static void WriteGifts(DiscordGuild guild, List<Tuple<ulong, string>> gifts)
+        public static void WriteGifts(DiscordGuild guild, List<(DiscordUser, string)> entries)
         {
             var path = PathHandle.GetGiftPath(guild);
+            var json = File.ReadAllText(path);
+            var list = JsonConvert.DeserializeObject<List<(ulong, string)>>(json);
+            if (list is null)
+                list = new List<(ulong, string)>();
 
-            if (gifts.Count > 0)
-                using (var sw = File.CreateText(path))
-                    for (int i = 0; i < gifts.Count; i++)
-                        WriteGift(sw, gifts[i].Item1, gifts[i].Item2);
+            if (entries.Count <= 0)
+                return;
+            entries.ForEach(t => list.Add((t.Item1.Id, t.Item2)));
+
+            json = JsonConvert.SerializeObject(list, Formatting.Indented);
+            File.WriteAllText(path, json);
         }
     }
 }

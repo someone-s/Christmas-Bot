@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Christmas bot.dll" size="32768">
+  <file name="Christmas bot.dll" size="35840">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>lhEntK2YcbStRZCk0VGE8FH1LVEDZvmc2CJ0QKE3FJE=</dsig:DigestValue>
+      <dsig:DigestValue>kd1Zaa0gm/6N1w1LaY9N/BTvm1FywQWJs0pu4jrTJ88=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Christmas bot.dll.config" size="2110">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kdMVw8qxSk8c5UbGSgQpncjRU4nBf07PdOTCYcq3c0w=</dsig:DigestValue>
+      <dsig:DigestValue>iFw1To5Rc9EZs6l3k63yK3+0qra+br4SWia99cN7Qdk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ConcurrentCollections.dll" size="13824">
@@ -564,24 +564,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>pTOoCbS7iwJyxzOPotRV6qdes42KCU6cOmuvfmJvXI8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="System.Text.Encodings.Web.dll" size="75880">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>uuD0U1uppbWJI5NMnV8ZrVKRl7sFINANB6M8jml05i0=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="System.Text.Json.dll" size="509544">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>nm6JsA/GVPOuw+lLud2THfLJtdMxhTMQRMNdBo4edNw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="System.Threading.Channels.dll" size="54376">

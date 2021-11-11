@@ -16,13 +16,13 @@
           "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": "0.3.252501",
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Newtonsoft.Json": "13.0.1",
           "System.Collections.Immutable": "6.0.0",
           "System.ComponentModel.Composition": "6.0.0",
           "System.Data.DataSetExtensions": "4.5.0",
           "System.Runtime": "4.3.1",
           "System.Security.Cryptography.Algorithms": "4.3.1",
           "System.Security.Cryptography.X509Certificates": "4.3.2",
-          "System.Text.Json": "6.0.0",
           "System.Threading.Channels": "6.0.0"
         },
         "runtime": {
@@ -762,29 +762,6 @@
           "System.Text.Encoding": "4.3.0"
         }
       },
-      "System.Text.Encodings.Web/6.0.0": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/System.Text.Encodings.Web.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
-          }
-        }
-      },
-      "System.Text.Json/6.0.0": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0"
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/System.Text.Json.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
-          }
-        }
-      },
       "System.Threading/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.1",
@@ -1387,20 +1364,6 @@
       "sha512": "sha512-YVMK0Bt/A43RmwizJoZ22ei2nmrhobgeiYwFzC4YAN+nue8RF6djXDMog0UCn+brerQoYVyaS+ghy9P/MUVcmw==",
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
-    },
-    "System.Text.Encodings.Web/6.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
-      "path": "system.text.encodings.web/6.0.0",
-      "hashPath": "system.text.encodings.web.6.0.0.nupkg.sha512"
-    },
-    "System.Text.Json/6.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
-      "path": "system.text.json/6.0.0",
-      "hashPath": "system.text.json.6.0.0.nupkg.sha512"
     },
     "System.Threading/4.3.0": {
       "type": "package",

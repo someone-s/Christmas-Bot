@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Christmas_bot
@@ -21,7 +22,12 @@ namespace Christmas_bot
                 url.EndsWith(".gifv");
         }
 
-        public static string CleanText(string input) =>
-            new string(input.Where(c => c != '^').ToArray()).Replace('\n', ' ');
+        public static string CleanText(string input)
+        {
+            Regex expression = new Regex("[\b\f\n\r\t\"\\ ]");
+            
+            return expression.Replace(input, " ");
+        }
+            
     }
 }

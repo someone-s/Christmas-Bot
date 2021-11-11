@@ -23,17 +23,14 @@ namespace Christmas_bot.Commands
             if (!RoleHandle.IsOwner(ctx.Guild, ctx.User))
             {
                 await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not owner");
+                    message: $"{ctx.User.Username} is not owner").ConfigureAwait(false);
             }
             else
             {
-                var path = PathHandle.GetAdminPath(ctx.Guild);
-
-                using (var sw = new StreamWriter(path, true))
-                    sw.WriteLine(newadmin.Id);
+                RoleHandle.AddAdmin(ctx.Guild, newadmin);
 
                 await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{newadmin.Username} added as admin");
+                    message: $"{newadmin.Username} added as admin").ConfigureAwait(false);
             }
 
             await message.DeleteAsync();
@@ -47,31 +44,15 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
-
             if (ctx.User != ctx.Guild.Owner)
                 await MessageHandle.SendError(ctx.Channel,
                     message: $"{ctx.User.Username} is not owner");
             else
             {
-                var admins = new List<ulong>();
-                var path = PathHandle.GetAdminPath(ctx.Guild);
-
-                var s = string.Empty;
-                using (var fs = File.Open(path, FileMode.OpenOrCreate))
-                using (var sr = new StreamReader(fs))
-                    while ((s = sr.ReadLine()) != null)
-                        admins.Add(ulong.Parse(s));
-
-                admins.Remove(formeradmin.Id);
-
-                File.Delete(path);
-                using (var sw = File.CreateText(path))
-                    foreach (var admin in admins)
-                        sw.WriteLine(admin);
+                RoleHandle.RemoveAdmin(ctx.Guild, formeradmin);
 
                 await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{formeradmin.Username} relegated");
+                    message: $"{formeradmin.Username} relegated").ConfigureAwait(false);
             }
 
             await message.DeleteAsync();
@@ -84,21 +65,14 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            var path = PathHandle.GetAdminPath(ctx.Guild);
             var embed = new DiscordEmbedBuilder
             {
                 Title = $"success",
                 Color = DiscordColor.Green
             };
 
-            var s = string.Empty;
-            using (var fs = File.Open(path, FileMode.OpenOrCreate))
-            using (var sr = new StreamReader(fs))
-                while ((s = sr.ReadLine()) != null)
-                {
-                    var admin = await ctx.Guild.GetMemberAsync(ulong.Parse(s));
-                    embed.AddField("admin", admin.Username);
-                }
+            var hash = await RoleHandle.GetAdmins(ctx.Guild).ConfigureAwait(false);
+            foreach (var user in hash) embed.AddField("admin", user.Username);
 
             await ctx.Channel.SendMessageAsync(embed).ConfigureAwait(false);
 
@@ -122,38 +96,33 @@ namespace Christmas_bot.Commands
 
             if (filtered.Length == 0)
                 await MessageHandle.SendError(ctx.Channel,
-                    message: $"gift by {ctx.User.Username} is empty");
+                    message: $"gift by {ctx.User.Username} is empty").ConfigureAwait(false);
             else
             {
-                var path = PathHandle.GetGiftPath(ctx.Guild);
-
-                using (var sw = new StreamWriter(path, true))
+                switch (type)
                 {
-                    switch (type)
-                    {
-                        case "text":
-                            await MessageHandle.SendSuccess(ctx.Channel, 
-                                message: $"{filtered} added by {ctx.User.Username}");
-                            GiftHandle.WriteGift(sw, ctx.User.Id, $"text:{filtered}");
-                            break;
-                        case "url":
-                            await MessageHandle.SendSuccess(ctx.Channel,
-                                message: $"{filtered} added by {ctx.User.Username}",
-                                url: filtered);
-                            GiftHandle.WriteGift(sw, ctx.User.Id, $"url:{filtered}");
-                            break;
-                        case "imageurl":
-                            await MessageHandle.SendSuccess(ctx.Channel,
-                                message: $"{filtered} added by {ctx.User.Username}",
-                                url: filtered,
-                                imageurl: filtered);
-                            GiftHandle.WriteGift(sw, ctx.User.Id, $"image:{filtered}");
-                            break;
-                        default:
-                            await MessageHandle.SendError(ctx.Channel,
-                                message: $"unsupported gift type {type}");
-                            break;
-                    }
+                    case "text":
+                        await MessageHandle.SendSuccess(ctx.Channel,
+                            message: $"{filtered} added by {ctx.User.Username}").ConfigureAwait(false);
+                        GiftHandle.WriteGift(ctx.Guild, ctx.User, $"text:{filtered}");
+                        break;
+                    case "url":
+                        await MessageHandle.SendSuccess(ctx.Channel,
+                            message: $"{filtered} added by {ctx.User.Username}",
+                            url: filtered).ConfigureAwait(false);
+                        GiftHandle.WriteGift(ctx.Guild, ctx.User, $"url:{filtered}");
+                        break;
+                    case "imageurl":
+                        await MessageHandle.SendSuccess(ctx.Channel,
+                            message: $"{filtered} added by {ctx.User.Username}",
+                            url: filtered,
+                            imageurl: filtered).ConfigureAwait(false);
+                        GiftHandle.WriteGift(ctx.Guild, ctx.User, $"image:{filtered}");
+                        break;
+                    default:
+                        await MessageHandle.SendError(ctx.Channel,
+                            message: $"unsupported gift type {type}").ConfigureAwait(false);
+                        break;
                 }
             }
 
@@ -174,20 +143,10 @@ namespace Christmas_bot.Commands
                 Color = DiscordColor.Green
             };
 
-            using (var fs = File.Open(path, FileMode.OpenOrCreate))
-            using (var sr = new StreamReader(fs))
-            {
-                var s = string.Empty;
-                var i = 1;
-                while ((s = sr.ReadLine()) != null)
-                {
-                    GiftHandle.ReadGift(s, out ulong id, out string gift);
-                    var sender = await ctx.Guild.GetMemberAsync(id).ConfigureAwait(false);
-                    embed.AddField($"{i}: {gift}", sender.Username);
-
-                    i++;
-                }
-            }
+            var entries = await GiftHandle.ReadGifts(ctx.Guild).ConfigureAwait(false);
+            entries.
+                Select((t, i) => Tuple.Create(i, t)).ToList().
+                ForEach(c => embed.AddField($"{c.Item1}: {c.Item2.Item2}", c.Item2.Item1.Username));
 
             await ctx.Channel.SendMessageAsync(embed).ConfigureAwait(false);
 
@@ -204,23 +163,25 @@ namespace Christmas_bot.Commands
 
             if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
                 await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not admin");
+                    message: $"{ctx.User.Username} is not admin").ConfigureAwait(false);
             else
             {
-                var gifts = GiftHandle.ReadGifts(ctx.Guild);
+                index--;
 
-                if (gifts.Count < index && index - 1 < 0)
+                var entries = await GiftHandle.ReadGifts(ctx.Guild).ConfigureAwait(false);
+
+                if (entries.Count <= index && index < 0)
                     await MessageHandle.SendError(ctx.Channel,
-                        message: $"index out of range (1-{gifts.Count})");
+                        message: $"index out of range (1-{entries.Count})").ConfigureAwait(false);
                 else
                 {
-                    gifts.RemoveAt(index - 1);
+                    entries.RemoveAt(index);
 
                     File.Delete(PathHandle.GetGiftPath(ctx.Guild));
-                    GiftHandle.WriteGifts(ctx.Guild, gifts);
+                    GiftHandle.WriteGifts(ctx.Guild, entries);
 
                     await MessageHandle.SendSuccess(ctx.Channel,
-                        message: "gift removed from pool");
+                        message: "gift removed from pool").ConfigureAwait(false);
                 }
             }
 
@@ -236,17 +197,17 @@ namespace Christmas_bot.Commands
 
             if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
                 await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not admin");
+                    message: $"{ctx.User.Username} is not admin").ConfigureAwait(false);
             else
             {
                 var random = new Random();
-                var gifts = GiftHandle.ReadGifts(ctx.Guild);
+                var gifts = await GiftHandle.ReadGifts(ctx.Guild).ConfigureAwait(false);
                 var used = new HashSet<int>();
                 var flip = false;
 
                 if (gifts.Count == 0)
                     await MessageHandle.SendError(ctx.Channel,
-                        message: "no presents avaliable");
+                        message: "no presents avaliable").ConfigureAwait(false);
                 else
                 {
                     foreach (var user in await ctx.Guild.GetAllMembersAsync().ConfigureAwait(false))
@@ -261,24 +222,24 @@ namespace Christmas_bot.Commands
                         while (used.Contains(i))
                             i = random.Next(0, gifts.Count);
 
-                        var sender = await ctx.Guild.GetMemberAsync(gifts[i].Item1).ConfigureAwait(false);
+                        var sender = gifts[i].Item1;
                         var gift = gifts[i].Item2;
 
                         if (gift.StartsWith("text:"))
                             await MessageHandle.SendSuccess(ctx.Channel,
                                 alternatetitle: "present",
-                                message: $"{user.Mention} got `{gift.Remove(0, 5)}` from {sender.Mention}");
+                                message: $"{user.Mention} got `{gift.Remove(0, 5)}` from {sender.Mention}").ConfigureAwait(false);
                         else if (gift.StartsWith("url:"))
                             await MessageHandle.SendSuccess(ctx.Channel,
                                 alternatetitle: "present",
                                 message: $"{user.Mention} got this from {sender.Mention}",
-                                url: gift.Remove(0, 4));
+                                url: gift.Remove(0, 4)).ConfigureAwait(false);
                         else if (gift.StartsWith("image:"))
                             await MessageHandle.SendSuccess(ctx.Channel,
                                 alternatetitle: "present",
                                 message: $"{user.Mention} got this from {sender.Mention}",
                                 url: gift.Remove(0, 6),
-                                imageurl: gift.Remove(0, 6));
+                                imageurl: gift.Remove(0, 6)).ConfigureAwait(false);
 
                         used.Add(i);
                     }
@@ -302,14 +263,14 @@ namespace Christmas_bot.Commands
 
             if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
                 await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not admin");
+                    message: $"{ctx.User.Username} is not admin").ConfigureAwait(false);
             else
             {
                 var path = PathHandle.GetGiftPath(ctx.Guild);
                 File.Delete(path);
 
                 await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{ctx.User.Username} cleared gifts pool");
+                    message: $"{ctx.User.Username} cleared gifts pool").ConfigureAwait(false);
             }
 
             await message.DeleteAsync();
