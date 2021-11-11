@@ -44,5 +44,12 @@ namespace Christmas_bot
                 Directory.CreateDirectory(path);
             return path;
         }
+        public static string GetConfigPath()
+        {
+            var config = $"{GetRootPath()}{Path.DirectorySeparatorChar}config.json";
+            if (!File.Exists(config))
+                File.CreateText(config);
+            return config;
+        }
     }
 }

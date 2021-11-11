@@ -16,8 +16,6 @@ C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\Newtonsoft.Json.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Collections.Immutable.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.ComponentModel.Composition.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Text.Encodings.Web.dll
-C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Text.Json.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\System.Threading.Channels.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\runtimes\win-x64\native\libopus.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\clickonce\runtimes\win-x64\native\libsodium.dll

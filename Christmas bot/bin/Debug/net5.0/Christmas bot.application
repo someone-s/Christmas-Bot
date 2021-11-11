@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Christmas bot.dll.manifest" size="29162">
+    <dependentAssembly dependencyType="install" codebase="Christmas bot.dll.manifest" size="28354">
       <assemblyIdentity name="Christmas bot.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IKvvNtsBpHW/BhG96Foh74WZ/UCUX3NdWHTwSZyHBfw=</dsig:DigestValue>
+        <dsig:DigestValue>EMsaJZyqL/a1y48BMXLxy1msZ/OOIVXGBPJRQqRgLaI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

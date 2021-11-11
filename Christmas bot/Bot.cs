@@ -1,17 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
-using DSharpPlus.Entities;
 using DSharpPlus.EventArgs;
-using System.Diagnostics;
 
 using Christmas_bot.Commands;
 
@@ -31,11 +24,13 @@ namespace Christmas_bot
                 MinimumLogLevel = LogLevel.Debug
             };
 
-            using (var fs = new FileStream($"{PathHandle.GetRootPath()}{Path.DirectorySeparatorChar}config.json", FileMode.OpenOrCreate))
+            if (AuthHandle.TryGetToken(out var token))
+                config.Token = token;
+            else
             {
-                var json = await JsonDocument.ParseAsync(fs, new JsonDocumentOptions { AllowTrailingCommas = true }).ConfigureAwait(false);
-                var root = json.RootElement;
-                config.Token = root.GetProperty("token").GetString();
+                Console.WriteLine("error: Invalid Token File");
+                await Task.Delay(10000);
+                return;
             }
 
             Client = new DiscordClient(config);

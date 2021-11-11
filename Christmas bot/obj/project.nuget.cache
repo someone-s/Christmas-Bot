@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jtP6qzRstPqP3h8b4VyU2KEKQKj0a3PlOTNfPJ+VJo1SQQ3MG/fDW0WREvoHgkzTGvzSTdqi6miWGDt/4wiEOg==",
+  "dgSpecHash": "RBr991sVGjxDxHVcNArB4oOEwRX5prIirakCKt7aocnauFhU9+whC2eVBNp5RRZmolmH/D+i8znRmRQSrv9ukg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Eden\\Documents\\Bot\\Christmas bot\\Christmas bot\\Christmas bot.csproj",
   "expectedPackageFiles": [
@@ -84,8 +84,6 @@
     "C:\\Users\\Eden\\.nuget\\packages\\system.security.principal.windows\\4.3.0\\system.security.principal.windows.4.3.0.nupkg.sha512",
     "C:\\Users\\Eden\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Eden\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\Eden\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
-    "C:\\Users\\Eden\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
     "C:\\Users\\Eden\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Eden\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
     "C:\\Users\\Eden\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
