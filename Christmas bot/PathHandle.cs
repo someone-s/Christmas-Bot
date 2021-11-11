@@ -1,24 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
+using Newtonsoft.Json;
 using DSharpPlus.Entities;
 
 namespace Christmas_bot
 {
     internal static class PathHandle
     {
+        public static string GetPrefixPath(DiscordGuild guild)
+        {
+            var root = GetServerPath(guild);
+            var prefixes = $"{root}{Path.DirectorySeparatorChar}prefix.txt";
+            if (!File.Exists(prefixes))
+            {
+                using (File.Create(prefixes))
+                    Console.WriteLine($"{prefixes} created");
+                var json = JsonConvert.SerializeObject(new List<string> { "?" });
+                File.WriteAllText(prefixes, json);
+            }
+            return prefixes;
+        }
         public static string GetAdminPath(DiscordGuild guild)
         {
             var root = GetServerPath(guild);
             var admins = $"{root}{Path.DirectorySeparatorChar}admins.txt";
             if (!File.Exists(admins))
                 using (File.Create(admins))
-                    Debug.WriteLine($"{admins} created");
+                    Console.WriteLine($"{admins} created");
             return admins;
         }
         public static string GetGiftPath(DiscordGuild guild)
@@ -27,7 +37,7 @@ namespace Christmas_bot
             var gifts = $"{root}{Path.DirectorySeparatorChar}gifts.txt";
             if (!File.Exists(gifts))
                 using (File.Create(gifts))
-                    Debug.WriteLine($"{gifts} created");
+                    Console.WriteLine($"{gifts} created");
             return gifts;
         }
         public static string GetRootPath()

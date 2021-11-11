@@ -39,7 +39,7 @@ namespace Christmas_bot
 
             var commandsConfig = new CommandsNextConfiguration
             {
-                StringPrefixes = new string[] { "?" },
+                PrefixResolver = PrefixHandle.HandlePrefix,
                 EnableDms = false,
                 EnableMentionPrefix = true
             };
@@ -47,6 +47,7 @@ namespace Christmas_bot
             Commands = Client.UseCommandsNext(commandsConfig);
             Commands.RegisterCommands<InfoCommands>();
             Commands.RegisterCommands<GiftCommands>();
+            Commands.RegisterCommands<PrefixCommands>();
 
             await Client.ConnectAsync();
 

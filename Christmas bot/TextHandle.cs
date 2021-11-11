@@ -25,8 +25,9 @@ namespace Christmas_bot
         public static string CleanText(string input)
         {
             Regex expression = new Regex("[\b\f\n\r\t\"\\ ]");
+            string output = expression.Replace(input, " ");
             
-            return expression.Replace(input, " ");
+            return new string(output.Take(240).ToArray());
         }
             
     }

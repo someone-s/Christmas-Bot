@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Christmas bot.dll" size="35840">
+  <file name="Christmas bot.dll" size="41984">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kd1Zaa0gm/6N1w1LaY9N/BTvm1FywQWJs0pu4jrTJ88=</dsig:DigestValue>
+      <dsig:DigestValue>bjahAS+487LSLrosI7pj5vkw69VDc8MkiQz9aPz0JYE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Christmas bot.dll.config" size="2110">
