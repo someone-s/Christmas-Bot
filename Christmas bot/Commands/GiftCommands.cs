@@ -104,20 +104,20 @@ namespace Christmas_bot.Commands
                     case "text":
                         await MessageHandle.SendSuccess(ctx.Channel,
                             message: $"{filtered} added by {ctx.User.Username}").ConfigureAwait(false);
-                        GiftHandle.WriteGift(ctx.Guild, ctx.User, $"text:{filtered}");
+                        await GiftHandle.WriteGift(ctx.Guild, ctx.User, $"text:{filtered}").ConfigureAwait(false);
                         break;
                     case "url":
                         await MessageHandle.SendSuccess(ctx.Channel,
                             message: $"{filtered} added by {ctx.User.Username}",
                             url: filtered).ConfigureAwait(false);
-                        GiftHandle.WriteGift(ctx.Guild, ctx.User, $"url:{filtered}");
+                        await GiftHandle.WriteGift(ctx.Guild, ctx.User, $"url:{filtered}").ConfigureAwait(false);
                         break;
                     case "imageurl":
                         await MessageHandle.SendSuccess(ctx.Channel,
                             message: $"{filtered} added by {ctx.User.Username}",
                             url: filtered,
                             imageurl: filtered).ConfigureAwait(false);
-                        GiftHandle.WriteGift(ctx.Guild, ctx.User, $"image:{filtered}");
+                        await GiftHandle.WriteGift(ctx.Guild, ctx.User, $"image:{filtered}").ConfigureAwait(false);
                         break;
                     default:
                         await MessageHandle.SendError(ctx.Channel,
@@ -144,9 +144,27 @@ namespace Christmas_bot.Commands
             };
 
             var entries = await GiftHandle.ReadGifts(ctx.Guild).ConfigureAwait(false);
-            entries.
-                Select((t, i) => Tuple.Create(i, t)).ToList().
-                ForEach(c => embed.AddField($"{c.Item1}: {c.Item2.Item2}", c.Item2.Item1.Username));
+            for (int i = 0; i < entries.Count; i++)
+            {
+                if (i % 20 == 0)
+                {
+                    await ctx.Channel.SendMessageAsync(embed).ConfigureAwait(false);
+                    embed = new DiscordEmbedBuilder
+                    {
+                        Title = $"success",
+                        Color = DiscordColor.Green
+                    };
+                }
+                var entry = entries[i];
+                var user = entry.Item1;
+                var gift = TextHandle.CleanText(entry.Item2);
+                if (gift.StartsWith("text:"))
+                    embed.AddField($"{i + 1}: {gift.Insert(5, " ")}", user.Username);
+                else if (gift.StartsWith("url:"))
+                    embed.AddField($"{i + 1}: {gift.Insert(4, " ")}", user.Username);
+                else if (gift.StartsWith("image:"))
+                    embed.AddField($"{i + 1}: {gift.Insert(6, " ")}", user.Username);
+            }
 
             await ctx.Channel.SendMessageAsync(embed).ConfigureAwait(false);
 
@@ -178,7 +196,7 @@ namespace Christmas_bot.Commands
                     entries.RemoveAt(index);
 
                     File.Delete(PathHandle.GetGiftPath(ctx.Guild));
-                    GiftHandle.WriteGifts(ctx.Guild, entries);
+                    await GiftHandle.WriteGifts(ctx.Guild, entries).ConfigureAwait(false);
 
                     await MessageHandle.SendSuccess(ctx.Channel,
                         message: "gift removed from pool").ConfigureAwait(false);
@@ -223,7 +241,7 @@ namespace Christmas_bot.Commands
                             i = random.Next(0, gifts.Count);
 
                         var sender = gifts[i].Item1;
-                        var gift = gifts[i].Item2;
+                        var gift = TextHandle.CleanText(gifts[i].Item2);
 
                         if (gift.StartsWith("text:"))
                             await MessageHandle.SendSuccess(ctx.Channel,
@@ -248,7 +266,7 @@ namespace Christmas_bot.Commands
 
                     File.Delete(path);
                     if (!flip)
-                        GiftHandle.WriteGifts(ctx.Guild, gifts.Where((t, i) => !used.Contains(i)).ToList());
+                        await GiftHandle.WriteGifts(ctx.Guild, gifts.Where((t, i) => !used.Contains(i)).ToList()).ConfigureAwait(false);
                 }
             }
 
