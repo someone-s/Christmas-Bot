@@ -44,7 +44,7 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (ctx.User != ctx.Guild.Owner)
+            if (!RoleHandle.IsOwner(ctx.Guild, ctx.User))
                 await MessageHandle.SendError(ctx.Channel,
                     message: $"{ctx.User.Username} is not owner");
             else

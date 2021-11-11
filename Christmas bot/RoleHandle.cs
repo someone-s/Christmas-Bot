@@ -29,11 +29,12 @@ namespace Christmas_bot
             var path = PathHandle.GetAdminPath(guild);
             var json = File.ReadAllText(path);
 
-            var hash = JsonConvert.DeserializeObject<List<ulong>>(json);
-            if (hash == null)
-                hash = new List<ulong>();
-            hash.Add(user.Id);
-            json = JsonConvert.SerializeObject(hash);
+            var list = JsonConvert.DeserializeObject<List<ulong>>(json);
+            if (list == null)
+                list = new List<ulong>();
+            if (!list.Contains(user.Id))
+                list.Add(user.Id);
+            json = JsonConvert.SerializeObject(list);
             File.WriteAllText(path, json);
         }
         public static async Task<List<DiscordUser>> GetAdmins(DiscordGuild guild)
@@ -41,11 +42,11 @@ namespace Christmas_bot
             var path = PathHandle.GetAdminPath(guild);
             var json = File.ReadAllText(path);
 
-            var hash = JsonConvert.DeserializeObject<List<ulong>>(json);
-            if (hash == null)
-                hash = new List<ulong>();
+            var list = JsonConvert.DeserializeObject<List<ulong>>(json);
+            if (list == null)
+                list = new List<ulong>();
             var output = new List<DiscordUser>();
-            foreach (var id in hash) 
+            foreach (var id in list) 
             {
                 var user = await guild.GetMemberAsync(id);
                 output.Add(user);
@@ -57,11 +58,12 @@ namespace Christmas_bot
             var path = PathHandle.GetAdminPath(guild);
             var json = File.ReadAllText(path);
 
-            var hash = JsonConvert.DeserializeObject<List<ulong>>(json);
-            if (hash == null)
-                hash = new List<ulong>();
-            hash.Remove(user.Id);
-            json = JsonConvert.SerializeObject(hash);
+            var list = JsonConvert.DeserializeObject<List<ulong>>(json);
+            if (list == null)
+                list = new List<ulong>();
+            if (list.Contains(user.Id))
+                list.Remove(user.Id);
+            json = JsonConvert.SerializeObject(list);
             File.WriteAllText(path, json);
         }
     }
