@@ -59,7 +59,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>6GP/c1L6VRf1Cq0nbCUwgtYWrE8faoR1IKD2aFWlJWM=</dsig:DigestValue>
+      <dsig:DigestValue>HNUzO8Thtzv2/elJpKO2OlIQEk5yYGQAmYfntDvj2dY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Christmas bot.dll.config" size="2110">

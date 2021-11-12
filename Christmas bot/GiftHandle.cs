@@ -33,6 +33,10 @@ namespace Christmas_bot
                 {
                     continue;
                 }
+                catch (DSharpPlus.Exceptions.UnauthorizedException)
+                {
+                    continue;
+                }
 
                 var path = PathHandle.GetGiftPath(guild);
                 var json = File.ReadAllText(path);
