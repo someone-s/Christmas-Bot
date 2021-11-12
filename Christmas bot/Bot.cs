@@ -12,8 +12,8 @@ namespace Christmas_bot
 {
     public class Bot
     {
-        public DiscordClient Client { get; private set; }
-        public CommandsNextExtension Commands { get; private set; }
+        public static DiscordClient Client { get; private set; }
+        public static CommandsNextExtension Commands { get; private set; }
 
         public async Task RunAsync()
         {
@@ -44,10 +44,15 @@ namespace Christmas_bot
                 EnableMentionPrefix = true
             };
 
+
             Commands = Client.UseCommandsNext(commandsConfig);
             Commands.RegisterCommands<InfoCommands>();
             Commands.RegisterCommands<GiftCommands>();
             Commands.RegisterCommands<PrefixCommands>();
+            Commands.RegisterCommands<AdminCommands>();
+
+            await PrefixHandle.LoadPrefix().ConfigureAwait(false);
+            await GiftHandle.LoadGifts().ConfigureAwait(false);
 
             await Client.ConnectAsync();
 
