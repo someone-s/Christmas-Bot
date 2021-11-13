@@ -108,18 +108,12 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
-                await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not admin").ConfigureAwait(false);
+            if (GiftHandle.RemoveGift(ctx.Guild, index - 1))
+                await MessageHandle.SendSuccess(ctx.Channel,
+                    message: "gift removed from pool").ConfigureAwait(false);
             else
-            {
-                if (GiftHandle.RemoveGift(ctx.Guild, index - 1))
-                    await MessageHandle.SendSuccess(ctx.Channel,
-                        message: "gift removed from pool").ConfigureAwait(false);
-                else
-                    await MessageHandle.SendError(ctx.Channel,
-                        message: $"invalid operation").ConfigureAwait(false);
-            }
+                await MessageHandle.SendError(ctx.Channel,
+                    message: $"invalid operation").ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
@@ -131,58 +125,52 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
+            var random = new Random();
+            var gifts = GiftHandle.ReadGifts(ctx.Guild);
+            var used = new HashSet<int>();
+            var flip = false;
+
+            if (gifts.Count == 0)
                 await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not admin").ConfigureAwait(false);
+                    message: "no presents avaliable").ConfigureAwait(false);
             else
             {
-                var random = new Random();
-                var gifts = GiftHandle.ReadGifts(ctx.Guild);
-                var used = new HashSet<int>();
-                var flip = false;
-
-                if (gifts.Count == 0)
-                    await MessageHandle.SendError(ctx.Channel,
-                        message: "no presents avaliable").ConfigureAwait(false);
-                else
+                foreach (var user in await ctx.Guild.GetAllMembersAsync().ConfigureAwait(false))
                 {
-                    foreach (var user in await ctx.Guild.GetAllMembersAsync().ConfigureAwait(false))
+                    if (used.Count == gifts.Count)
                     {
-                        if (used.Count == gifts.Count)
-                        {
-                            used.Clear();
-                            flip = true;
-                        }
-
-                        int i = random.Next(0, gifts.Count);
-                        while (used.Contains(i))
-                            i = random.Next(0, gifts.Count);
-
-                        var sender = gifts[i].Item1;
-                        var gift = TextHandle.CleanText(gifts[i].Item2);
-
-                        if (gift.StartsWith("text:"))
-                            await MessageHandle.SendSuccess(ctx.Channel,
-                                alternatetitle: "present",
-                                message: $"{user.Mention} got `{gift.Remove(0, 5)}` from {sender.Mention}").ConfigureAwait(false);
-                        else if (gift.StartsWith("url:"))
-                            await MessageHandle.SendSuccess(ctx.Channel,
-                                alternatetitle: "present",
-                                message: $"{user.Mention} got this from {sender.Mention}",
-                                url: gift.Remove(0, 4)).ConfigureAwait(false);
-                        else if (gift.StartsWith("image:"))
-                            await MessageHandle.SendSuccess(ctx.Channel,
-                                alternatetitle: "present",
-                                message: $"{user.Mention} got this from {sender.Mention}",
-                                url: gift.Remove(0, 6),
-                                imageurl: gift.Remove(0, 6)).ConfigureAwait(false);
-
-                        used.Add(i);
+                        used.Clear();
+                        flip = true;
                     }
 
-                    GiftHandle.ClearGifts(ctx.Guild);
-                    if (!flip) GiftHandle.AddGifts(ctx.Guild, gifts.Where((t, i) => !used.Contains(i)).ToList());
+                    int i = random.Next(0, gifts.Count);
+                    while (used.Contains(i))
+                        i = random.Next(0, gifts.Count);
+
+                    var sender = gifts[i].Item1;
+                    var gift = TextHandle.CleanText(gifts[i].Item2);
+
+                    if (gift.StartsWith("text:"))
+                        await MessageHandle.SendSuccess(ctx.Channel,
+                            alternatetitle: "present",
+                            message: $"{user.Mention} got `{gift.Remove(0, 5)}` from {sender.Mention}").ConfigureAwait(false);
+                    else if (gift.StartsWith("url:"))
+                        await MessageHandle.SendSuccess(ctx.Channel,
+                            alternatetitle: "present",
+                            message: $"{user.Mention} got this from {sender.Mention}",
+                            url: gift.Remove(0, 4)).ConfigureAwait(false);
+                    else if (gift.StartsWith("image:"))
+                        await MessageHandle.SendSuccess(ctx.Channel,
+                            alternatetitle: "present",
+                            message: $"{user.Mention} got this from {sender.Mention}",
+                            url: gift.Remove(0, 6),
+                            imageurl: gift.Remove(0, 6)).ConfigureAwait(false);
+
+                    used.Add(i);
                 }
+
+                GiftHandle.ClearGifts(ctx.Guild);
+                if (!flip) GiftHandle.AddGifts(ctx.Guild, gifts.Where((t, i) => !used.Contains(i)).ToList());
             }
 
             await message.DeleteAsync();
@@ -194,16 +182,10 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
-                await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not admin").ConfigureAwait(false);
-            else
-            {
-                GiftHandle.ClearGifts(ctx.Guild);
+            GiftHandle.ClearGifts(ctx.Guild);
 
-                await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{ctx.User.Username} cleared gifts pool").ConfigureAwait(false);
-            }
+            await MessageHandle.SendSuccess(ctx.Channel,
+                message: $"{ctx.User.Username} cleared gifts pool").ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
