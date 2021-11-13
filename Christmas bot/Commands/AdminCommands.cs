@@ -20,18 +20,10 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsOwner(ctx.Guild, ctx.User))
-            {
-                await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not owner").ConfigureAwait(false);
-            }
-            else
-            {
-                RoleHandle.AddAdmin(ctx.Guild, newadmin);
+            RoleHandle.AddAdmin(ctx.Guild, newadmin);
 
-                await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{newadmin.Username} added as admin").ConfigureAwait(false);
-            }
+            await MessageHandle.SendSuccess(ctx.Channel,
+                message: $"{newadmin.Username} added as admin").ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
@@ -44,16 +36,10 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsOwner(ctx.Guild, ctx.User))
-                await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not owner");
-            else
-            {
-                RoleHandle.RemoveAdmin(ctx.Guild, formeradmin);
+            RoleHandle.RemoveAdmin(ctx.Guild, formeradmin);
 
-                await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{formeradmin.Username} relegated").ConfigureAwait(false);
-            }
+            await MessageHandle.SendSuccess(ctx.Channel,
+                message: $"{formeradmin.Username} relegated").ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
