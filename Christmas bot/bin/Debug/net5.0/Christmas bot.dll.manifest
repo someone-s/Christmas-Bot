@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Christmas bot.dll" size="45056">
+  <file name="Christmas bot.dll" size="45568">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HNUzO8Thtzv2/elJpKO2OlIQEk5yYGQAmYfntDvj2dY=</dsig:DigestValue>
+      <dsig:DigestValue>VpzSA3PNQLRDjGRw7StZyuq3NS6t4rpVFF8jD4g6SJg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Christmas bot.dll.config" size="2110">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4/6U6u9gFxfYX81pauhMqkcBY02wS+/ZI4D052W+9rs=</dsig:DigestValue>
+      <dsig:DigestValue>T7a6EOBMHeAO9tPa3qaSoq5HlIOG7Z1jL3nkEAwTl/A=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ConcurrentCollections.dll" size="13824">
@@ -159,6 +159,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>/vKsvGE9k1NEQ/ksgwI4AdJfiIvMV/JffMAY2/Jumd8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Nager.PublicSuffix.dll" size="22528">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>j3WWwUI5AeDF//gnYfDdKXCwW58pZqEca9u/7RetcDg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Newtonsoft.Json.dll" size="695336">

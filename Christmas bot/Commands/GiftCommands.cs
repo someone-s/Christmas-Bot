@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
+using Nager.PublicSuffix;
 
 namespace Christmas_bot.Commands
 {
@@ -28,30 +29,35 @@ namespace Christmas_bot.Commands
                     message: $"gift by {ctx.User.Username} is empty").ConfigureAwait(false);
             else
             {
-                switch (type)
+                var isvalid = TextHandle.isValidUrl(filtered);
+
+                if (type == "text")
                 {
-                    case "text":
-                        await MessageHandle.SendSuccess(ctx.Channel,
-                            message: $"{filtered} added by {ctx.User.Username}").ConfigureAwait(false);
-                        GiftHandle.AddGift(ctx.Guild, ctx.User, $"text:{filtered}");
-                        break;
-                    case "url":
-                        await MessageHandle.SendSuccess(ctx.Channel,
-                            message: $"{filtered} added by {ctx.User.Username}",
-                            url: filtered).ConfigureAwait(false);
-                        GiftHandle.AddGift(ctx.Guild, ctx.User, $"url:{filtered}");
-                        break;
-                    case "imageurl":
-                        await MessageHandle.SendSuccess(ctx.Channel,
-                            message: $"{filtered} added by {ctx.User.Username}",
-                            url: filtered,
-                            imageurl: filtered).ConfigureAwait(false);
-                        GiftHandle.AddGift(ctx.Guild, ctx.User, $"image:{filtered}");
-                        break;
-                    default:
-                        await MessageHandle.SendError(ctx.Channel,
-                            message: $"unsupported gift type {type}").ConfigureAwait(false);
-                        break;
+                    await MessageHandle.SendSuccess(ctx.Channel,
+                        message: $"{filtered} added by {ctx.User.Username}").ConfigureAwait(false);
+                    GiftHandle.AddGift(ctx.Guild, ctx.User, $"text:{filtered}");
+                }
+                else if (isvalid &&
+                    type == "url")
+                {
+                    await MessageHandle.SendSuccess(ctx.Channel,
+                               message: $"{filtered} added by {ctx.User.Username}",
+                               url: filtered).ConfigureAwait(false);
+                    GiftHandle.AddGift(ctx.Guild, ctx.User, $"url:{filtered}");
+                }
+                else if (isvalid &&
+                    type == "imageurl")
+                {
+                    await MessageHandle.SendSuccess(ctx.Channel,
+                        message: $"{filtered} added by {ctx.User.Username}",
+                        url: filtered,
+                        imageurl: filtered).ConfigureAwait(false);
+                    GiftHandle.AddGift(ctx.Guild, ctx.User, $"image:{filtered}");
+                }
+                else
+                {
+                    await MessageHandle.SendError(ctx.Channel,
+                        message: $"unsupported gift type {type}").ConfigureAwait(false);
                 }
             }
 
@@ -159,22 +165,29 @@ namespace Christmas_bot.Commands
                             i = random.Next(0, gifts.Count);
 
                         var sender = gifts[i].Item1;
-                        var gift = TextHandle.CleanText(gifts[i].Item2);
+                        var original = TextHandle.CleanText(gifts[i].Item2);
 
-                        if (gift.StartsWith("text:"))
+                        var gift = string.Empty;
+                        if (original.StartsWith("text:")) gift = original.Remove(0, 5);
+                        else if (original.StartsWith("url:")) gift = original.Remove(0, 4);
+                        else if (original.StartsWith("image:")) gift = original.Remove(0, 6);
+
+                        var isvalid = TextHandle.isValidUrl(gift);
+
+                        if (original.StartsWith("text:") || !isvalid)
                             await MessageHandle.SendSuccess(ctx.Channel,
                                 alternatetitle: "present",
-                                message: $"{user.Mention} got `{gift.Remove(0, 5)}` from {sender.Mention}").ConfigureAwait(false);
-                        else if (gift.StartsWith("url:"))
+                                message: $"{user.Mention} got `{gift}` from {sender.Mention}").ConfigureAwait(false);
+                        else if (original.StartsWith("url:") && isvalid)
                             await MessageHandle.SendSuccess(ctx.Channel,
                                 alternatetitle: "present",
                                 message: $"{user.Mention} got this from {sender.Mention}",
-                                url: gift.Remove(0, 4)).ConfigureAwait(false);
-                        else if (gift.StartsWith("image:"))
+                                url: gift).ConfigureAwait(false);
+                        else if (original.StartsWith("image:") && isvalid)
                             await MessageHandle.SendSuccess(ctx.Channel,
                                 alternatetitle: "present",
                                 message: $"{user.Mention} got this from {sender.Mention}",
-                                url: gift.Remove(0, 6),
+                                url: gift,
                                 imageurl: gift.Remove(0, 6)).ConfigureAwait(false);
 
                         used.Add(i);

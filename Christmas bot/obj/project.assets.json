@@ -195,6 +195,15 @@
           "ref/netstandard1.3/_._": {}
         }
       },
+      "Nager.PublicSuffix/2.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Nager.PublicSuffix.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Nager.PublicSuffix.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -1716,6 +1725,28 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "Nager.PublicSuffix/2.2.2": {
+      "sha512": "ZvWmKZPRkkPYxELr+IISOdI25TweYaAw2KjqQY/3vhJSc5FFtsopuuQ31tFs54/w8ph9hPt3bT6DY2onO4qv6w==",
+      "type": "package",
+      "path": "nager.publicsuffix/2.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net45/Nager.PublicSuffix.dll",
+        "lib/net45/Nager.PublicSuffix.xml",
+        "lib/net461/Nager.PublicSuffix.dll",
+        "lib/net461/Nager.PublicSuffix.xml",
+        "lib/net5.0/Nager.PublicSuffix.dll",
+        "lib/net5.0/Nager.PublicSuffix.xml",
+        "lib/netstandard2.0/Nager.PublicSuffix.dll",
+        "lib/netstandard2.0/Nager.PublicSuffix.xml",
+        "logo.png",
+        "nager.publicsuffix.2.2.2.nupkg.sha512",
+        "nager.publicsuffix.nuspec",
+        "readme.txt"
       ]
     },
     "Newtonsoft.Json/13.0.1": {
@@ -4609,6 +4640,7 @@
       "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers >= 0.3.252501",
       "Microsoft.Extensions.DependencyInjection >= 6.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 6.0.0",
+      "Nager.PublicSuffix >= 2.2.2",
       "Newtonsoft.Json >= 13.0.1",
       "System.Collections.Immutable >= 6.0.0",
       "System.ComponentModel.Composition >= 6.0.0",
@@ -4695,6 +4727,10 @@
           "Microsoft.Extensions.Logging.Abstractions": {
             "target": "Package",
             "version": "[6.0.0, )"
+          },
+          "Nager.PublicSuffix": {
+            "target": "Package",
+            "version": "[2.2.2, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
