@@ -77,6 +77,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Nager.PublicSuffix": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"

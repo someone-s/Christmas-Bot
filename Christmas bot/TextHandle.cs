@@ -29,6 +29,13 @@ namespace Christmas_bot
             
             return new string(output.Take(240).ToArray());
         }
-            
+        
+        public static bool isValidUrl(string input)
+        {
+            return
+                (input.StartsWith("http") ||
+                input.StartsWith("https")) &&
+                input.IndexOf('.') > 0;
+        }
     }
 }
