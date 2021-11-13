@@ -20,18 +20,10 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
-            {
-                await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not owner").ConfigureAwait(false);
-            }
-            else
-            {
-                PrefixHandle.AddPrefix(ctx.Guild, newprefix);
+            PrefixHandle.AddPrefix(ctx.Guild, newprefix);
 
-                await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{newprefix} added as prefix").ConfigureAwait(false);
-            }
+            await MessageHandle.SendSuccess(ctx.Channel,
+                message: $"{newprefix} added as prefix").ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
@@ -44,16 +36,10 @@ namespace Christmas_bot.Commands
         {
             var message = await ctx.Channel.SendMessageAsync("processing...").ConfigureAwait(false);
 
-            if (!RoleHandle.IsAdmin(ctx.Guild, ctx.User))
-                await MessageHandle.SendError(ctx.Channel,
-                    message: $"{ctx.User.Username} is not owner");
-            else
-            {
-                PrefixHandle.RemovePrefix(ctx.Guild, formerprefix);
+            PrefixHandle.RemovePrefix(ctx.Guild, formerprefix);
 
-                await MessageHandle.SendSuccess(ctx.Channel,
-                    message: $"{formerprefix} removed").ConfigureAwait(false);
-            }
+            await MessageHandle.SendSuccess(ctx.Channel,
+                message: $"{formerprefix} removed").ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
