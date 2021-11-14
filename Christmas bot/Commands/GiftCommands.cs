@@ -82,7 +82,7 @@ namespace Christmas_bot.Commands
             var buttonb = new DiscordButtonComponent
             (
                 style: ButtonStyle.Primary,
-                customId: $"{ctx.Guild}-{ctx.Channel}-{DateTime.UnixEpoch}-B",
+                customId: $"{ctx.Guild.Id}-{ctx.Channel.Id}-{DateTime.UnixEpoch}-B",
                 label: "",
                 emoji: new DiscordComponentEmoji("⬅️")
             );
@@ -90,7 +90,7 @@ namespace Christmas_bot.Commands
             var buttonf = new DiscordButtonComponent
             (
                 style: ButtonStyle.Primary,
-                customId: $"{ctx.Guild}-{ctx.Channel}-{DateTime.UnixEpoch}-F",
+                customId: $"{ctx.Guild.Id}-{ctx.Channel.Id}-{DateTime.UnixEpoch}-F",
                 label: "",
                 emoji: new DiscordComponentEmoji("➡️")
             );
@@ -111,7 +111,7 @@ namespace Christmas_bot.Commands
                     embed.AddField($"{i + 1}: {gift.Insert(6, " ")}", user.Username);
             }
 
-            embed.WithFooter($"1/{Math.Ceiling(entries.Count % 10f)}");
+            embed.WithFooter($"1/{MathF.Ceiling(entries.Count / 10f)}");
 
             var output = new DiscordMessageBuilder();
             output.AddEmbed(embed);
@@ -268,7 +268,7 @@ namespace Christmas_bot.Commands
 
             var entries = GiftHandle.ReadGifts(args.Guild);
 
-            index = Math.Clamp(index, 0, entries.Count % 10);
+            index = Math.Clamp(index, 0, entries.Count / 10);
 
             for (int i = 0; i < 10; i++)
             {
@@ -279,14 +279,14 @@ namespace Christmas_bot.Commands
                 var user = entry.Item1;
                 var gift = TextHandle.CleanText(entry.Item2);
                 if (gift.StartsWith("text:"))
-                    embed.AddField($"{i + 1}: {gift.Insert(5, " ")}", user.Username);
+                    embed.AddField($"{t + 1}: {gift.Insert(5, " ")}", user.Username);
                 else if (gift.StartsWith("url:"))
-                    embed.AddField($"{i + 1}: {gift.Insert(4, " ")}", user.Username);
+                    embed.AddField($"{t + 1}: {gift.Insert(4, " ")}", user.Username);
                 else if (gift.StartsWith("image:"))
-                    embed.AddField($"{i + 1}: {gift.Insert(6, " ")}", user.Username);
+                    embed.AddField($"{t + 1}: {gift.Insert(6, " ")}", user.Username);
             }
 
-            embed.WithFooter($"{index + 1}/{Math.Ceiling(entries.Count % 10f)}");
+            embed.WithFooter($"{index + 1}/{MathF.Ceiling(entries.Count / 10f)}");
 
             await args.Interaction.CreateResponseAsync(InteractionResponseType.UpdateMessage).ConfigureAwait(false);
             await args.Message.ModifyAsync(new Optional<DiscordEmbed>(embed)).ConfigureAwait(false);
