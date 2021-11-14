@@ -4,14 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
-using Nager.PublicSuffix;
+using DSharpPlus.EventArgs;
 
 namespace Christmas_bot.Commands
 {
-    public class GiftCommands : BaseCommandModule
+    public partial class GiftCommands : BaseCommandModule
     {
         [Command("gift-add")]
         [Aliases("ga", "add-g")]
@@ -78,18 +79,27 @@ namespace Christmas_bot.Commands
                 Color = DiscordColor.Green
             };
 
+            var buttonb = new DiscordButtonComponent
+            (
+                style: ButtonStyle.Primary,
+                customId: $"{ctx.Guild}-{ctx.Channel}-{DateTime.UnixEpoch}-B",
+                label: "",
+                emoji: new DiscordComponentEmoji("⬅️")
+            );
+
+            var buttonf = new DiscordButtonComponent
+            (
+                style: ButtonStyle.Primary,
+                customId: $"{ctx.Guild}-{ctx.Channel}-{DateTime.UnixEpoch}-F",
+                label: "",
+                emoji: new DiscordComponentEmoji("➡️")
+            );
+
             var entries = GiftHandle.ReadGifts(ctx.Guild);
-            for (int i = 0; i < entries.Count; i++)
+            for (int i = 0; i < 10; i++)
             {
-                if (i % 20 == 0 && i != 0)
-                {
-                    await ctx.Channel.SendMessageAsync(embed).ConfigureAwait(false);
-                    embed = new DiscordEmbedBuilder
-                    {
-                        Title = $"success",
-                        Color = DiscordColor.Green
-                    };
-                }
+                if (i >= entries.Count) break;
+
                 var entry = entries[i];
                 var user = entry.Item1;
                 var gift = TextHandle.CleanText(entry.Item2);
@@ -101,7 +111,13 @@ namespace Christmas_bot.Commands
                     embed.AddField($"{i + 1}: {gift.Insert(6, " ")}", user.Username);
             }
 
-            await ctx.Channel.SendMessageAsync(embed).ConfigureAwait(false);
+            embed.WithFooter($"1/{Math.Ceiling(entries.Count % 10f)}");
+
+            var output = new DiscordMessageBuilder();
+            output.AddEmbed(embed);
+            output.AddComponents(buttonb, buttonf);
+
+            await ctx.Channel.SendMessageAsync(output).ConfigureAwait(false);
 
             await message.DeleteAsync();
         }
@@ -220,6 +236,60 @@ namespace Christmas_bot.Commands
 
             await message.DeleteAsync();
         }
+    }
 
+    public partial class GiftCommands
+    {
+        public static async Task ListGiftInteraction(DiscordClient client, ComponentInteractionCreateEventArgs args)
+        {
+            if (args.Interaction.Data.ComponentType != ComponentType.Button) return;
+
+            if (args.Message.Embeds.Count < 1) return;
+
+            var embed = new DiscordEmbedBuilder(args.Message.Embeds[0]);
+            var footer = embed.Footer.Text;
+
+            if (footer == null) return;
+            if (!footer.Contains('/')) return;
+
+            var items = footer.Split('/');
+
+            if (items.Count() < 1) return;
+            if (!int.TryParse(items[0], out var index)) return;
+            index -= 1;
+
+            Console.WriteLine(args.Interaction.Data.CustomId);
+
+            if (args.Interaction.Data.CustomId.EndsWith('F')) index += 1;
+            else if (args.Interaction.Data.CustomId.EndsWith('B')) index -= 1;
+            else return;
+
+            embed.RemoveFieldRange(0, embed.Fields.Count);
+
+            var entries = GiftHandle.ReadGifts(args.Guild);
+
+            index = Math.Clamp(index, 0, entries.Count % 10);
+
+            for (int i = 0; i < 10; i++)
+            {
+                var t = i + index * 10;
+                if (t >= entries.Count) break;
+
+                var entry = entries[t];
+                var user = entry.Item1;
+                var gift = TextHandle.CleanText(entry.Item2);
+                if (gift.StartsWith("text:"))
+                    embed.AddField($"{i + 1}: {gift.Insert(5, " ")}", user.Username);
+                else if (gift.StartsWith("url:"))
+                    embed.AddField($"{i + 1}: {gift.Insert(4, " ")}", user.Username);
+                else if (gift.StartsWith("image:"))
+                    embed.AddField($"{i + 1}: {gift.Insert(6, " ")}", user.Username);
+            }
+
+            embed.WithFooter($"{index + 1}/{Math.Ceiling(entries.Count % 10f)}");
+
+            await args.Interaction.CreateResponseAsync(InteractionResponseType.UpdateMessage).ConfigureAwait(false);
+            await args.Message.ModifyAsync(new Optional<DiscordEmbed>(embed)).ConfigureAwait(false);
+        }
     }
 }

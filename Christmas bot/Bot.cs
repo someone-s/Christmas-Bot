@@ -44,6 +44,7 @@ namespace Christmas_bot
                 EnableMentionPrefix = true
             };
 
+            Client.ComponentInteractionCreated += GiftCommands.ListGiftInteraction;
 
             Commands = Client.UseCommandsNext(commandsConfig);
             Commands.RegisterCommands<InfoCommands>();
