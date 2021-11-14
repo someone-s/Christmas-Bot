@@ -36,4 +36,3 @@ C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\net5.0\Christm
 C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\net5.0\ref\Christmas bot.dll
 C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\net5.0\Christmas bot.pdb
 C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\obj\Debug\net5.0\Christmas bot.genruntimeconfig.cache
-C:\Users\Eden\Documents\Bot\Christmas bot\Christmas bot\bin\Debug\net5.0\Nager.PublicSuffix.dll
