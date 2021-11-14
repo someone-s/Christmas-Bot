@@ -59,7 +59,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>SguX3cue3HAbrpfIqplftbIizjEus6dTyOwFFIZsfeY=</dsig:DigestValue>
+      <dsig:DigestValue>f/3L4Y0mluZY0va6YEtT4IZZqr9gDmcbVYO5gz79YxI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Christmas bot.dll.config" size="2110">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>r1qchgfv9K5wBD5a3PXi2y3s3pdeclOw8+9gOHJaygU=</dsig:DigestValue>
+      <dsig:DigestValue>HfmFot20rK5cx4ZW50egkFk2GmaDYYMnI68Dkz3sdCk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ConcurrentCollections.dll" size="13824">
