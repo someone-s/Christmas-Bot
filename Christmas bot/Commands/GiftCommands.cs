@@ -204,7 +204,7 @@ namespace Christmas_bot.Commands
                                 alternatetitle: "present",
                                 message: $"{user.Mention} got this from {sender.Mention}",
                                 url: gift,
-                                imageurl: gift.Remove(0, 6)).ConfigureAwait(false);
+                                imageurl: gift).ConfigureAwait(false);
 
                         used.Add(i);
                     }
